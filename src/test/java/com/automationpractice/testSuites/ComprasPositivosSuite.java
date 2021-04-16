@@ -3,7 +3,6 @@ package com.automationpractice.testSuites;
 import com.automationpractice.testCases.AdicionarDoisItensNoCarrinhoCadastrarUsuarioFinalizarCompraComSucessoTestCase;
 import com.automationpractice.testCases.AdicionarDoisItensNoCarrinhoLogarFinalizarCompraComSucessoTestCase;
 import com.automationpractice.utils.report.Report;
-import com.automationpractice.utils.selenium.Driver;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
