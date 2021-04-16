@@ -1,6 +1,6 @@
-# webdriver-jupiter-gradle-extents
+# webdriver-junit-extents-maven
 >Resumo:
->Implementação de Testes Automatizados de Interfaces Gráficas com o uso das tecnologias Java 8, Selenium Webdriver, Gradle, Junit 5 e Extents Report;
+>Implementação de Testes Automatizados de Interfaces Gráficas com o uso das tecnologias Java 8, Selenium Webdriver, Maven, Junit e Extents Report;
 
 #### Página testada:
 > http://www.automationpractice.com/
@@ -9,24 +9,30 @@
 | requisito | página de download |
 | ------    | ------ |
 | Java 8    | https://www.oracle.com/br/java/technologies/javase-jdk8-downloads.html |
-| Gradle    | https://gradle.org/install/ |
 ```sh
-Ps: é necessário tanto a instalação quanto a configuração das variáveis de ambiente tanto do Java, quanto do Gradle.
+Ps: é necessário a configuração das variáveis de ambiente do Java.
 ```
 
 ### Dependências:
 | Tecnologia usada | página oficial |
 | ------ | ------ |
-| JUnit Jupiter | https://junit.org/junit5/ |
+| JUnit  | https://junit.org/junit4/ |
 | Selenium Webdriver | https://www.selenium.dev/ |
 | WebDriverManager | https://github.com/bonigarcia/webdrivermanager/ |
 | ExtentReports | https://www.extentreports.com/ |
 | JFairy | https://devskiller.github.io/jfairy/ |
 
 #### Arquitetura usada:
-O projeto usa a arquitetura AppObject e esta organizada da seguinte maneira:
+O projeto usa a arquitetura AppObject.
+A Arquitetura AppObject tem como mote a separação entre mapeamento de tela, ações de elementos verificações e o teste em si.
+Cada pacote a seguir representa uma camada da aplicação:
+- AppObject -> camada de mapeamento de elementos;
+- Tasks -> camada responsavel por implementar as ações dos elementos mapeados;
+- VerificationPoints -> é uma camada Task especializada em implementar as verificações
+- TestCases -> Nesta camada é onde os testes serão implementados
+- TestSuites -> Camada opcional e dependente do framework de testes utilizado. Esta camada tem a função de agrupar os testes conforme a necessidade.
 
-![alt text](https://user-images.githubusercontent.com/80764831/112851148-14424380-9081-11eb-8083-b3cfe9282957.png)
+![alt text](https://user-images.githubusercontent.com/80764831/114989448-ce052680-9e6d-11eb-8b91-2f69a5948c75.png)
 
 #### configurations.properties:
 Esse arquivo define as principais configurações do projeto:
@@ -41,9 +47,14 @@ Esse arquivo define as principais configurações do projeto:
 | REPORT_PATH       | ./reports/   | Define o caminho e a pasta para a geração do report |
 
 #### Como executar o teste:
-Atualmente existe apenas o arquivo "ComprarTestCase.java" no pacote "testCases" que se refere ao teste de "comprar" no [site](http://www.automationpractice.com/). O teste de comprar deve conter cenários específicos como "Comprar um item com sucesso", porém para o propósito desse projeto foi implementando apenas o cenário "Escolher um item, adicionar no carrinho, efetuar cadastro e finalizar a compra" no método "adicionarUmItemNoCarrinhoCadastrarUsuarioFinalizarCompraComSucesso" que contem a anotação "@ReapeatedTest(5)" que irá fazer com que esse teste rode 5 vezes. Tal artifício foi usado para poder gerar facilmente dois tipos de reports sem a necessidade de implementação de outros cenários. Um report com estrutura de suíte que agrupará todos os resultados das execuções do cenário em um único arquivo HTML ou a estrutura de reports individuais onde que, para cada execução do teste irá ser gerado um arquivo HTML com o resultado da mesma, assim podendo simular ambos os tipos de estrutura de report de maneira fácil bastando comentar a anotação "@BeforeAll".
-Escolhido a estrutura de report a ser gerada, o padrão atual é a de suíte, o teste pode ser rodado através da task "Test" do Gradle ou diretamente como um arquivo JUnit.
-O resultado da execução irá ser armazenado na pasta reports.
+Há três maneiras de executar os dois testes contidos no pacote 'testCases':
+- 1- Individualmente: executando cada um como uma classe de teste do Junit, assim cada teste irá seu proprio arquivo de report;
+- 2- Como Suite: executando a classe 'ComprasPositivosSuite' como um arquivo de teste do Junit que irá rodar os dois testes e salvará em um só arquivo de report;
+- 3- Como task do Maven: ao executar a task 'test' do Maven os dois testes irão rodar individualmente gerando seu próprio arquivo de report;
+
+#### Reports:
+Conforme for o tipo de execução dos testes serão gerados, ou arquivos html individuais para cada testes, ou um arquivo úncio agrupando ambos testes.
+Os arquivos são gerados na pasta "reports" e podem ser abertos diretamente no navegador. 
 
 
 
