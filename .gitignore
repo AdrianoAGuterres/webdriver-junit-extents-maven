@@ -1,11 +1,28 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+# Gradle files and folders
+.gradle/
+.gradle/**
+gradle/**
+gradle/
+build/**
+gradle-app.setting
+gradle-wrapper.jar
+.gradletasknamecache
+gradlew
+gradlew.bat
+
+# Intelij files and folders
+.idea/*
+
+# Java files and folders
+*.class
+*.log
+*.jar
+
+# report
+reports/**
+
+#maven
+target/**
+
+
+
