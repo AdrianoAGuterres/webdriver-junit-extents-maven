@@ -24,7 +24,7 @@ Ps: é necessário a configuração das variáveis de ambiente do Java.
 
 #### Arquitetura usada:
 O projeto usa a arquitetura AppObject.
-A Arquitetura AppObject tem como mote a separação entre mapeamento de tela, ações de elementos verificações e o teste em si.
+A Arquitetura AppObject tem como mote a separação entre mapeamento de tela, ações de elementos, verificações e o teste em si.
 Cada pacote a seguir representa uma camada da aplicação:
 - AppObject -> camada de mapeamento de elementos;
 - Tasks -> camada responsavel por implementar as ações dos elementos mapeados;
