@@ -28,9 +28,9 @@ A Arquitetura AppObject tem como mote a separação entre mapeamento de tela, a�
 Cada pacote a seguir representa uma camada da aplicação:
 - AppObject -> camada de mapeamento de elementos;
 - Tasks -> camada responsavel por implementar as ações dos elementos mapeados;
-- VerificationPoints -> é uma camada Task especializada em implementar as verificações
-- TestCases -> Nesta camada é onde os testes serão implementados
-- TestSuites -> Camada opcional e dependente do framework de testes utilizado. Esta camada tem a função de agrupar os testes conforme a necessidade.
+- VerificationPoints -> é uma camada Task especializada em implementar as verificações;
+- TestCases -> Nesta camada é onde os testes serão implementados;
+- TestSuites -> Camada opcional e dependente do framework de testes utilizado. Esta camada tem a função de agrupar os testes conforme a necessidade;
 
 ![alt text](https://user-images.githubusercontent.com/80764831/114989448-ce052680-9e6d-11eb-8b91-2f69a5948c75.png)
 
